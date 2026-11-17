@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deepak Suiwal — AI Agency | AI agents that reply, follow up &amp; close 24/7</title>
+<meta name="description" content="I build AI agents for businesses — agents that reply, follow up and close, 24/7. Real builds, no gyaan. Built with no-code tools.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#FF1E1E; --orange:#FF6B00; --ink:#1F2328; --grey:#5A6470;
+  --line:#EFEFEF; --soft:#FFF5F3; --card:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.display{font-family:'Poppins',sans-serif;font-weight:800;line-height:1.08;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+mark{background:linear-gradient(transparent 62%, #FFE3DE 62%);color:inherit;padding:0 2px}
+.eyebrow{display:inline-block;font-weight:800;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--red);background:var(--soft);border:1px solid #FFD9D4;padding:7px 14px;border-radius:999px}
+.btn{display:inline-block;font-family:'Poppins';font-weight:800;font-size:15px;padding:14px 26px;border-radius:999px;transition:.2s;cursor:pointer;border:0}
+.btn-red{background:var(--red);color:#fff;box-shadow:0 10px 24px rgba(255,30,30,.28)}
+.btn-red:hover{background:#E01414;transform:translateY(-2px)}
+.btn-ghost{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.btn-ghost:hover{border-color:var(--red);color:var(--red);transform:translateY(-2px)}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-family:'Poppins';font-weight:900;font-size:19px}
+.logo span{color:var(--red)}
+.nav-links{display:flex;gap:26px;font-weight:700;font-size:14px}
+.nav-links a:hover{color:var(--red)}
+.nav-cta{display:flex;align-items:center;gap:12px}
+.nav-cta .btn{padding:10px 20px;font-size:14px}
+.burger{display:none;background:none;border:0;font-size:26px;cursor:pointer}
+
+/* hero */
+.hero{padding:76px 0 60px;position:relative}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(38px,5.4vw,62px);margin:18px 0 16px}
+.hero p.lede{font-size:18px;color:var(--grey);max-width:540px;font-weight:600}
+.hero p.lede b{color:var(--ink)}
+.typed{font-family:'Poppins';font-weight:800;font-size:19px;color:var(--red);min-height:30px;margin-top:14px}
+.typed .caret{display:inline-block;width:3px;height:20px;background:var(--red);vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero-ctas{display:flex;gap:14px;margin-top:26px;flex-wrap:wrap}
+.hero-proof{display:flex;gap:22px;margin-top:34px;flex-wrap:wrap}
+.hero-proof div b{font-family:'Poppins';font-size:24px;display:block;line-height:1}
+.hero-proof div span{font-size:13px;color:var(--grey);font-weight:600}
+.hero-visual{position:relative;display:flex;justify-content:center}
+.avatar-card{position:relative;width:min(380px,88%);border-radius:28px;background:linear-gradient(160deg,#FFF1EF,#fff 55%);border:2px solid #FFD9D4;padding:26px 26px 10px;box-shadow:0 24px 60px rgba(255,30,30,.14);transition:transform .25s ease-out;will-change:transform}
+.avatar-card img{border-radius:20px;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:center 12%;background:#fff}
+.avatar-card .tag{position:absolute;top:-14px;left:20px;background:var(--ink);color:#fff;font-family:'Poppins';font-weight:800;font-size:13px;padding:8px 14px;border-radius:999px}
+.bubble{position:absolute;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.10);padding:10px 14px;font-size:13px;font-weight:700;max-width:210px;animation:float 5s ease-in-out infinite}
+.bubble small{display:block;color:var(--grey);font-weight:600;font-size:11px}
+.bubble b{color:var(--red)}
+.bubble.b1{top:6%;left:-6%}
+.bubble.b2{bottom:16%;right:-4%;animation-delay:1.6s}
+.bubble.b3{bottom:-4%;left:6%;animation-delay:3s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* marquee */
+.marquee{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);overflow:hidden;padding:14px 0;background:#fff}
+.marquee-track{display:flex;gap:0;white-space:nowrap;animation:scroll 22s linear infinite;width:max-content}
+.marquee-track span{font-family:'Poppins';font-weight:800;font-size:20px;padding:0 18px}
+.marquee-track i{color:var(--red);font-style:normal}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:84px 0}
+.sec-head{max-width:640px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(30px,4vw,44px);margin:14px 0 12px}
+.sec-head p{color:var(--grey);font-size:17px;font-weight:600}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.card{border:2px solid var(--ink);border-radius:22px;padding:26px;background:var(--card);transition:.2s;position:relative}
+.card:hover{transform:translateY(-4px);box-shadow:8px 8px 0 var(--red)}
+.card .icon{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:16px}
+.card h3{font-size:21px;margin-bottom:8px}
+.card p{color:var(--grey);font-weight:600;font-size:15px}
+.card .demo{margin-top:16px;background:#0E1116;border-radius:14px;padding:14px;color:#E8ECF1;font-size:13px}
+.card .demo .msg{padding:7px 11px;border-radius:11px;margin:6px 0;max-width:88%;line-height:1.45}
+.card .demo .in{background:#1D232E}
+.card .demo .out{background:#123B2A;margin-left:auto;text-align:left}
+.card .demo .lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#8A94A6;font-weight:800;margin-bottom:4px}
+.pill{display:inline-block;font-size:12px;font-weight:800;padding:5px 11px;border-radius:999px;background:var(--soft);color:var(--red);margin-top:14px}
+.icon.red{background:#FFE3DE}.icon.orange{background:#FFEEDD}.icon.blue{background:#E3ECFF}.icon.green{background:#DFF5E4}
+
+/* before after */
+.ba{border:2px solid var(--ink);border-radius:24px;overflow:hidden;position:relative;user-select:none}
+.ba-row{display:grid;grid-template-columns:1fr 1fr}
+.ba-cell{padding:30px 26px}
+.ba-cell.old{background:#F4F4F5}
+.ba-cell.new{background:#0E1116;color:#fff}
+.ba-cell h3{font-size:20px;margin-bottom:10px}
+.ba-cell ul{list-style:none;font-weight:600;font-size:15px}
+.ba-cell li{padding:7px 0;border-bottom:1px dashed rgba(128,128,128,.25)}
+.ba-cell li:last-child{border-bottom:0}
+.ba-cell.old li::before{content:"✕ ";color:var(--red);font-weight:800}
+.ba-cell.new li::before{content:"✓ ";color:#2BD97B;font-weight:800}
+.ba-note{text-align:center;font-size:13px;color:var(--grey);font-weight:700;margin-top:14px}
+
+/* services + learn */
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.svc{border:2px solid var(--line);border-radius:22px;padding:28px 24px;transition:.2s}
+.svc:hover{border-color:var(--ink);box-shadow:8px 8px 0 var(--orange)}
+.svc h3{font-size:20px;margin:14px 0 8px}
+.svc p{color:var(--grey);font-weight:600;font-size:15px}
+.svc .num{font-family:'Poppins';font-weight:900;font-size:15px;color:var(--red)}
+.learn{background:var(--ink);color:#fff;border-radius:28px;padding:52px 44px}
+.learn h2{color:#fff}
+.learn p{color:#B9C0CC;font-weight:600}
+.learn .three{margin-top:36px}
+.learn .svc{background:#171B22;border-color:#2A2F39;color:#fff}
+.learn .svc:hover{border-color:var(--red);box-shadow:8px 8px 0 var(--red)}
+.learn .svc p{color:#B9C0CC}
+
+/* proof */
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;text-align:center}
+.proof-grid .stat{border:2px solid var(--line);border-radius:20px;padding:26px 12px}
+.proof-grid b{font-family:'Poppins';font-size:34px;display:block;color:var(--red)}
+.proof-grid span{font-weight:700;font-size:14px;color:var(--grey)}
+.socials{display:flex;gap:14px;justify-content:center;margin-top:36px;flex-wrap:wrap}
+.socials a{font-family:'Poppins';font-weight:800;font-size:15px;border:2px solid var(--ink);border-radius:999px;padding:12px 22px;transition:.2s}
+.socials a:hover{background:var(--ink);color:#fff}
+
+/* contact */
+.contact{text-align:center;background:var(--soft);border-radius:28px;padding:64px 30px}
+.contact h2{font-size:clamp(30px,4vw,44px);margin:14px 0 12px}
+.contact p{color:var(--grey);font-weight:600;font-size:17px;max-width:560px;margin:0 auto 26px}
+footer{padding:34px 0 44px;text-align:center;color:var(--grey);font-weight:600;font-size:14px}
+footer b{color:var(--ink)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:860px){
+  .logo{font-size:16px;white-space:nowrap}
+  .nav-cta .btn{padding:8px 14px;font-size:13px;white-space:nowrap}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .cards,.three{grid-template-columns:1fr}
+  .proof-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none;position:absolute;top:66px;left:0;right:0;background:#fff;flex-direction:column;padding:18px 22px;border-bottom:2px solid var(--ink);gap:16px}
+  .nav-links.open{display:flex}
+  .burger{display:block}
+  .bubble.b1{left:0}.bubble.b2{right:0}
+  .learn{padding:36px 22px}
+  section{padding:60px 0}
+  .ba-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="logo" href="#">Deepak Suiwal <span>• AI Agency</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#work">What I Build</a>
+      <a href="#services">Services</a>
+      <a href="#learn">Learn</a>
+      <a href="#proof">Proof</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-red" href="https://www.instagram.com/deepaksuiwal" target="_blank" rel="noopener">DM &lsquo;AI&rsquo;</a>
+      <button class="burger" id="burger" aria-label="Menu">&#9776;</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">AI Agency &middot; Built with no-code tools</span>
+      <h1>AI agents that <mark>reply</mark>, follow up &amp; <mark>close 24/7</mark>.</h1>
+      <p class="lede">I help businesses get customers on autopilot. <b>Real builds, no gyaan</b> — working AI systems, tested live, built around your business.</p>
+      <div class="typed"><span id="typedText"></span><span class="caret"></span></div>
+      <div class="hero-ctas">
+        <a class="btn btn-red" href="#work">See what I build &darr;</a>
+        <a class="btn btn-ghost" href="#contact">Work with me</a>
+      </div>
+      <div class="hero-proof">
+        <div><b>4</b><span>AI agents live as demos</span></div>
+        <div><b>2</b><span>Audiences: businesses + learners</span></div>
+        <div><b>24/7</b><span>Agents never sleep</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="avatar-card" id="avatarCard">
+        <span class="tag">Deepak &middot; AI Agency</span>
+        <img src="assets/avatar.webp" alt="Deepak Suiwal — AI Agency">
+        <div class="bubble b1"><small>New lead &middot; just now</small>Hi! I need a demo for my salon. <b>Can you help?</b></div>
+        <div class="bubble b2"><small>AI agent &middot; replied in 4s</small>Yes! Here is a slot tomorrow at 11 AM. Shall I book it?</div>
+        <div class="bubble b3"><small>Result</small>Booked. No human touched it.</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee"><div class="marquee-track" id="marquee">
+  <span>AI Agents <i>✦</i></span><span>AI Automation <i>✦</i></span><span>AI Advertising <i>✦</i></span><span>AI-built SaaS <i>✦</i></span><span>Vibe Coding <i>✦</i></span>
+</div></div>
+
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What I Build</span>
+      <h2>Not slides. <mark>Working systems.</mark></h2>
+      <p>Every agent below is a real build. Try the flow — this is what your business gets.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="icon red">💬</div>
+        <h3>Reply Agent</h3>
+        <p>Answers every lead on WhatsApp and Instagram in seconds — even at 2 AM. No lead waits, no lead cools off.</p>
+        <div class="demo">
+          <div class="lbl">Live demo &middot; WhatsApp</div>
+          <div class="msg in">Do you have a slot this week?</div>
+          <div class="msg out">Yes — Thursday 4 PM is open. I have held it for you. Shall I confirm?</div>
+          <div class="msg in">Yes please!</div>
+          <div class="msg out">Done. See you Thursday. ✅</div>
+        </div>
+        <span class="pill">n8n + WhatsApp API</span>
+      </div>
+      <div class="card reveal">
+        <div class="icon orange">📞</div>
+        <h3>AI Receptionist</h3>
+        <p>Picks up calls, answers questions and books appointments while you sleep. Your front desk, minus the salary.</p>
+        <div class="demo">
+          <div class="lbl">Live demo &middot; Voice call</div>
+          <div class="msg in">Hello, what are your timings?</div>
+          <div class="msg out">We are open 10 AM to 8 PM. Would you like me to book you in?</div>
+          <div class="msg in">Tomorrow morning?</div>
+          <div class="msg out">Booked for 10:30 AM. A reminder will reach you tonight.</div>
+        </div>
+        <span class="pill">Voice AI + Calendar</span>
+      </div>
+      <div class="card reveal">
+        <div class="icon blue">🔁</div>
+        <h3>Follow-up System</h3>
+        <p>Chases every lead until they book — Day 1, Day 3, Day 7. The fortune is in the follow-up, and now it is automatic.</p>
+        <div class="demo">
+          <div class="lbl">Live demo &middot; Follow-up flow</div>
+          <div class="msg out">Day 1: Hey Rahul, still thinking about the demo?</div>
+          <div class="msg out">Day 3: Your slot is still open — want me to hold it?</div>
+          <div class="msg out">Day 7: Last call — shall I close this or keep it open?</div>
+        </div>
+        <span class="pill">n8n + CRM</span>
+      </div>
+      <div class="card reveal">
+        <div class="icon green">🚀</div>
+        <h3>Vibe-coded SaaS</h3>
+        <p>Small tools and products built with AI — fast to ship, built around one real business problem at a time.</p>
+        <div class="demo">
+          <div class="lbl">Live demo &middot; Product</div>
+          <div class="msg in">I need a tool that turns enquiries into bookings.</div>
+          <div class="msg out">Built it. Leads come in, slots go out, reminders go automatically.</div>
+          <div class="msg in">How long did that take?</div>
+          <div class="msg out">One evening. That is the point.</div>
+        </div>
+        <span class="pill">AI + No-code stack</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="before-after" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Before / After</span>
+      <h2>Same business. <mark>Different day.</mark></h2>
+      <p>Left: how most businesses still run. Right: what changes when an AI team runs it.</p>
+    </div>
+    <div class="ba reveal">
+      <div class="ba-row">
+        <div class="ba-cell old">
+          <h3>😴 Without agents</h3>
+          <ul>
+            <li>Leads wait hours for a reply</li>
+            <li>Missed calls = lost customers</li>
+            <li>Follow-ups depend on memory</li>
+            <li>Bookings need back-and-forth</li>
+            <li>Reviews never get asked for</li>
+          </ul>
+        </div>
+        <div class="ba-cell new">
+          <h3>⚡ With AI agents</h3>
+          <ul>
+            <li>Every lead answered in seconds</li>
+            <li>Calls answered and booked 24/7</li>
+            <li>Follow-ups run on autopilot</li>
+            <li>Bookings happen without chats</li>
+            <li>Reviews asked automatically</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="ba-note">Demo flows shown on this page use test leads. Real client results are shared only with proof.</p>
+  </div>
+</section>
+
+<section id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">For Businesses</span>
+      <h2>An AI team, <mark>when you can&rsquo;t hire one.</mark></h2>
+      <p>For startups and small businesses that can&rsquo;t hire a full team yet. Pick one system, or the whole stack.</p>
+    </div>
+    <div class="three">
+      <div class="svc reveal">
+        <div class="num">01</div>
+        <h3>AI Agents</h3>
+        <p>Reply, follow-up and booking agents that work your inbox, WhatsApp and calls — 24/7, without a salary.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="num">02</div>
+        <h3>AI Automation</h3>
+        <p>CRM updates, reports, outreach and reminders — the boring work, running itself in the background.</p>
+      </div>
+      <div class="svc reveal">
+        <div class="num">03</div>
+        <h3>AI Advertising</h3>
+        <p>Ad creatives and campaigns built with AI, tested fast, aimed at one thing: booked calls, not just clicks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="learn" style="padding-top:0">
+  <div class="wrap">
+    <div class="learn reveal">
+      <span class="eyebrow" style="background:#2A2F39;border-color:#2A2F39;color:#FF6B00">For Students &amp; Freelancers</span>
+      <h2 style="font-size:clamp(28px,4vw,40px);margin:14px 0 12px">Learn the same skills. <span style="color:var(--orange)">Grow the same way.</span></h2>
+      <p>Everything on this page is built with no-code tools. If you are a student or freelancer, you can learn the same stack — and build an AI agency of your own.</p>
+      <div class="three">
+        <div class="svc">
+          <div class="num">A</div>
+          <h3>Build agents</h3>
+          <p>Reply, follow-up and booking agents with n8n, WhatsApp and voice — no coding degree needed.</p>
+        </div>
+        <div class="svc">
+          <div class="num">B</div>
+          <h3>Ship SaaS</h3>
+          <p>Vibe-code small tools with AI and ship them in days, not months.</p>
+        </div>
+        <div class="svc">
+          <div class="num">C</div>
+          <h3>Get clients</h3>
+          <p>Use the same demos and proof to win your first business clients.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proof" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="eyebrow">Proof</span>
+      <h2>Real builds, <mark>no gyaan.</mark></h2>
+      <p>I show working systems, not prompt tutorials. Follow the builds as they ship.</p>
+    </div>
+    <div class="proof-grid reveal">
+      <div class="stat"><b>5</b><span>Posts live across 5 platforms</span></div>
+      <div class="stat"><b>4</b><span>AI agents built as demos</span></div>
+      <div class="stat"><b>0</b><span>Fake client claims. Ever.</span></div>
+      <div class="stat"><b>24/7</b><span>Agents on duty</span></div>
+    </div>
+    <div class="socials reveal">
+      <a href="https://www.instagram.com/deepaksuiwal" target="_blank" rel="noopener">Instagram ↗</a>
+      <a href="https://x.com/theDeepakSuiwal" target="_blank" rel="noopener">X ↗</a>
+      <a href="https://www.linkedin.com/in/deepaksuiwal" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/Deepaksuiwal" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap">
+    <div class="contact reveal">
+      <span class="eyebrow">Let&rsquo;s build</span>
+      <h2>Your business could be <mark>next.</mark></h2>
+      <p>DM &lsquo;AI&rsquo; on Instagram and tell me one boring task eating your day. I will show you the agent that kills it.</p>
+      <a class="btn btn-red" href="https://www.instagram.com/deepaksuiwal" target="_blank" rel="noopener">DM &lsquo;AI&rsquo; on Instagram</a>
+      <p style="margin:22px 0 0;font-size:15px">or write to <a href="mailto:contact@deepaksuiwal.com" style="color:var(--red);font-weight:800">contact@deepaksuiwal.com</a></p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>Deepak Suiwal</b> &middot; AI Agency &middot; Jaipur, India<br>
+    AI agents that reply, follow up &amp; close 24/7 &middot; Real builds, no gyaan.
+  </div>
+</footer>
+
+<script>
+// typing effect
+const lines = [
+  "AI agents that reply, follow up & close 24/7.",
+  "Real builds, no gyaan.",
+  "Built with no-code tools."
+];
+let li = 0, ci = 0, del = false;
+const el = document.getElementById('typedText');
+function tick(){
+  const line = lines[li];
+  el.textContent = line.slice(0, ci);
+  if(!del){ ci++; if(ci > line.length){ del = true; return setTimeout(tick, 1800); } }
+  else { ci--; if(ci === 0){ del = false; li = (li + 1) % lines.length; } }
+  setTimeout(tick, del ? 28 : 55);
+}
+tick();
+
+// marquee: duplicate content for seamless loop
+const mq = document.getElementById('marquee');
+mq.innerHTML += mq.innerHTML;
+
+// avatar cursor tilt
+const card = document.getElementById('avatarCard');
+document.addEventListener('mousemove', e => {
+  const r = card.getBoundingClientRect();
+  const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const dx = (e.clientX - cx) / r.width, dy = (e.clientY - cy) / r.height;
+  const d = Math.min(1, Math.hypot(dx, dy));
+  if(d < 1.6){
+    card.style.transform = `perspective(800px) rotateY(${dx * 10}deg) rotateX(${-dy * 8}deg) translateY(-4px)`;
+  }
+});
+document.addEventListener('mouseleave', () => { card.style.transform = ''; });
+
+// scroll reveal
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+}, {threshold: .12});
+document.querySelectorAll('.reveal').forEach(n => io.observe(n));
+
+// mobile menu
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+</body>
+</html>
