@@ -524,15 +524,18 @@ document.addEventListener('mouseleave', () => { card.style.transform = ''; });
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (window.gsap && window.ScrollTrigger && !reducedMotion) {
   gsap.registerPlugin(ScrollTrigger);
-  document.querySelectorAll('.reveal').forEach(n => n.classList.remove('reveal'));
+  // NOTE: .card and .svc keep their CSS transition (hover lift), so GSAP must
+  // NOT animate them — a CSS transition on the same properties freezes GSAP's
+  // from-tweens at opacity 0. They keep the .reveal class and the
+  // IntersectionObserver below reveals them, exactly as before.
+  document.querySelectorAll('.reveal').forEach(n => {
+    if (!n.matches('.card, .svc')) n.classList.remove('reveal');
+  });
   gsap.from('.hero .eyebrow, .hero h1, .hero .lede, .hero .typed, .hero-ctas, .hero-proof', {y:26, opacity:0, duration:.8, stagger:.09, ease:'power3.out', delay:.1});
   gsap.from('.avatar-card', {scale:.94, opacity:0, duration:.9, ease:'power3.out', delay:.25});
   gsap.to('.hero-visual', {yPercent:-6, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
   gsap.utils.toArray('.sec-head, .ba, .learn, .contact, .proof-grid, .socials, .hint').forEach(elm => {
     gsap.from(elm, {y:36, opacity:0, duration:.8, ease:'power3.out', scrollTrigger:{trigger:elm, start:'top 88%'}});
-  });
-  gsap.utils.toArray('.cards .card, .three .svc').forEach((c, i) => {
-    gsap.from(c, {y:44, opacity:0, duration:.7, ease:'power3.out', scrollTrigger:{trigger:c, start:'top 90%'}});
   });
   // stat counters
   document.querySelectorAll('.proof-grid .stat b').forEach(b => {
