@@ -138,6 +138,37 @@ footer b{color:var(--ink)}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 
+/* 3D hero depth layers */
+.hero-visual{perspective:1000px}
+.orb{position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none;will-change:transform;z-index:0}
+.orb.o1{width:180px;height:180px;background:radial-gradient(circle,#FF6B00 0%,transparent 70%);opacity:.28;top:-30px;right:-10px}
+.orb.o2{width:140px;height:140px;background:radial-gradient(circle,#FF1E1E 0%,transparent 70%);opacity:.22;bottom:-20px;left:-30px}
+.avatar-card{z-index:1}
+
+/* 360° interactive showcase */
+.show360{padding:70px 0 30px}
+.show360 .hint{text-align:center;color:var(--grey);font-weight:700;font-size:14px;margin-top:18px}
+.show360 .hint b{color:var(--red)}
+.ring-stage{perspective:1200px;height:340px;position:relative;cursor:grab;touch-action:pan-y}
+.ring-stage:active{cursor:grabbing}
+.ring{position:absolute;left:50%;top:20px;width:300px;height:280px;margin-left:-150px;transform-style:preserve-3d;will-change:transform}
+.ring-card{position:absolute;inset:0;background:#fff;border:2px solid var(--ink);border-radius:22px;padding:26px 22px;backface-visibility:hidden;box-shadow:0 18px 40px rgba(0,0,0,.12);cursor:pointer}
+.ring-card .icon{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:14px}
+.ring-card h3{font-size:21px;margin-bottom:6px}
+.ring-card p{color:var(--grey);font-weight:600;font-size:14px;line-height:1.5}
+.ring-card .pill{margin-top:14px}
+.ring-dots{display:flex;gap:8px;justify-content:center;margin-top:10px}
+.ring-dots button{width:9px;height:9px;border-radius:50%;border:0;background:#E3E3E3;cursor:pointer;padding:0}
+.ring-dots button.on{background:var(--red)}
+
+/* micro-interactions */
+.nav-links a{position:relative}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--red);transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.btn{will-change:transform}
+.tech-line{margin-top:18px;font-size:13px;color:var(--grey);font-weight:700}
+.tech-line b{color:var(--ink)}
+
 @media(max-width:860px){
   .logo{font-size:16px;white-space:nowrap}
   .nav-cta .btn{padding:8px 14px;font-size:13px;white-space:nowrap}
@@ -151,6 +182,11 @@ footer b{color:var(--ink)}
   .learn{padding:36px 22px}
   section{padding:60px 0}
   .ba-row{grid-template-columns:1fr}
+  .orb{display:none}
+  .ring-stage{height:auto;perspective:none;cursor:default}
+  .ring{position:static;width:auto;height:auto;margin:0;display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 18px;transform:none!important}
+  .ring-card{position:static;flex:0 0 78%;scroll-snap-align:center}
+  .ring-dots{display:none}
 }
 </style>
 </head>
@@ -191,6 +227,8 @@ footer b{color:var(--ink)}
       </div>
     </div>
     <div class="hero-visual">
+      <div class="orb o1" data-depth="22"></div>
+      <div class="orb o2" data-depth="34"></div>
       <div class="avatar-card" id="avatarCard">
         <span class="tag">Deepak &middot; AI Agency</span>
         <img src="assets/avatar.webp" alt="Deepak Suiwal — AI Agency">
@@ -205,6 +243,51 @@ footer b{color:var(--ink)}
 <div class="marquee"><div class="marquee-track" id="marquee">
   <span>AI Agents <i>✦</i></span><span>AI Automation <i>✦</i></span><span>AI Advertising <i>✦</i></span><span>AI-built SaaS <i>✦</i></span><span>Vibe Coding <i>✦</i></span>
 </div></div>
+
+<section class="show360" id="show360">
+  <div class="wrap">
+    <div class="sec-head reveal" style="text-align:center;margin-left:auto;margin-right:auto">
+      <span class="eyebrow">360&deg; Interactive</span>
+      <h2>Drag it. <mark>Spin the agents.</mark></h2>
+      <p>Every agent, one spin away. Drag the ring — or tap a card to bring it to the front.</p>
+    </div>
+    <div class="ring-stage" id="ringStage">
+      <div class="ring" id="ring">
+        <div class="ring-card" data-target="work">
+          <div class="icon red">💬</div>
+          <h3>Reply Agent</h3>
+          <p>Answers every lead on WhatsApp and Instagram in seconds — even at 2 AM.</p>
+          <span class="pill">n8n + WhatsApp API</span>
+        </div>
+        <div class="ring-card" data-target="work">
+          <div class="icon orange">📞</div>
+          <h3>AI Receptionist</h3>
+          <p>Picks up calls, answers questions and books appointments while you sleep.</p>
+          <span class="pill">Voice AI + Calendar</span>
+        </div>
+        <div class="ring-card" data-target="work">
+          <div class="icon blue">🔁</div>
+          <h3>Follow-up System</h3>
+          <p>Chases every lead until they book — Day 1, Day 3, Day 7. Automatic.</p>
+          <span class="pill">n8n + CRM</span>
+        </div>
+        <div class="ring-card" data-target="work">
+          <div class="icon green">🚀</div>
+          <h3>Vibe-coded SaaS</h3>
+          <p>Small tools built with AI — fast to ship, built around one real problem.</p>
+          <span class="pill">AI + No-code stack</span>
+        </div>
+      </div>
+    </div>
+    <div class="ring-dots" id="ringDots">
+      <button aria-label="Reply Agent"></button>
+      <button aria-label="AI Receptionist"></button>
+      <button aria-label="Follow-up System"></button>
+      <button aria-label="Vibe-coded SaaS"></button>
+    </div>
+    <p class="hint reveal">← drag to spin → &nbsp;·&nbsp; tap a card for the full demo below</p>
+  </div>
+</section>
 
 <section id="work">
   <div class="wrap">
@@ -396,9 +479,12 @@ footer b{color:var(--ink)}
   <div class="wrap">
     <b>Deepak Suiwal</b> &middot; AI Agency &middot; Jaipur, India<br>
     AI agents that reply, follow up &amp; close 24/7 &middot; Real builds, no gyaan.
+    <p class="tech-line">Built with <b>HTML5 &middot; CSS3 &middot; JavaScript &middot; GSAP</b> &middot; hosted on <b>GitHub Pages</b></p>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script>
 // typing effect
 const lines = [
@@ -434,6 +520,54 @@ document.addEventListener('mousemove', e => {
 });
 document.addEventListener('mouseleave', () => { card.style.transform = ''; });
 
+// GSAP cinematic scroll + entrance (falls back to .reveal if GSAP is absent)
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (window.gsap && window.ScrollTrigger && !reducedMotion) {
+  gsap.registerPlugin(ScrollTrigger);
+  document.querySelectorAll('.reveal').forEach(n => n.classList.remove('reveal'));
+  gsap.from('.hero .eyebrow, .hero h1, .hero .lede, .hero .typed, .hero-ctas, .hero-proof', {y:26, opacity:0, duration:.8, stagger:.09, ease:'power3.out', delay:.1});
+  gsap.from('.avatar-card', {scale:.94, opacity:0, duration:.9, ease:'power3.out', delay:.25});
+  gsap.to('.hero-visual', {yPercent:-6, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+  gsap.utils.toArray('.sec-head, .ba, .learn, .contact, .proof-grid, .socials, .hint').forEach(elm => {
+    gsap.from(elm, {y:36, opacity:0, duration:.8, ease:'power3.out', scrollTrigger:{trigger:elm, start:'top 88%'}});
+  });
+  gsap.utils.toArray('.cards .card, .three .svc').forEach((c, i) => {
+    gsap.from(c, {y:44, opacity:0, duration:.7, ease:'power3.out', scrollTrigger:{trigger:c, start:'top 90%'}});
+  });
+  // stat counters
+  document.querySelectorAll('.proof-grid .stat b').forEach(b => {
+    const v = parseInt(b.textContent, 10);
+    if (!isNaN(v) && v > 0) {
+      const obj = {n:0};
+      gsap.to(obj, {n:v, duration:1.2, ease:'power2.out', scrollTrigger:{trigger:b, start:'top 92%'}, onUpdate:() => { b.textContent = Math.round(obj.n); }});
+    }
+  });
+}
+
+// magnetic CTA buttons (desktop pointers only)
+if (window.matchMedia('(pointer:fine)').matches && !reducedMotion) {
+  document.querySelectorAll('.btn-red').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const dx = e.clientX - (r.left + r.width / 2), dy = e.clientY - (r.top + r.height / 2);
+      btn.style.transform = `translate(${dx * 0.18}px, ${dy * 0.28}px)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+}
+
+// hero depth orbs follow the cursor
+const orbs = document.querySelectorAll('.orb');
+if (orbs.length && !reducedMotion) {
+  document.querySelector('.hero').addEventListener('mousemove', e => {
+    const cx = e.clientX / window.innerWidth - .5, cy = e.clientY / window.innerHeight - .5;
+    orbs.forEach(o => {
+      const d = parseFloat(o.dataset.depth || 20);
+      o.style.transform = `translate(${cx * d}px, ${cy * d}px)`;
+    });
+  });
+}
+
 // scroll reveal
 const io = new IntersectionObserver(entries => {
   entries.forEach(en => { if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
@@ -445,6 +579,59 @@ const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 burger.addEventListener('click', () => navLinks.classList.toggle('open'));
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+// 360° interactive ring (desktop 3D; mobile becomes a swipe strip via CSS)
+(function(){
+  const stage = document.getElementById('ringStage');
+  const ringEl = document.getElementById('ring');
+  const dots = Array.from(document.querySelectorAll('#ringDots button'));
+  if (!stage || !ringEl) return;
+  const desktop3D = window.matchMedia('(min-width:861px)').matches;
+  if (!desktop3D) return;
+  const cards = Array.from(ringEl.children);
+  const N = cards.length, STEP = 360 / N, R = 340;
+  cards.forEach((c, i) => { c.style.transform = `rotateY(${i * STEP}deg) translateZ(${R}px)`; });
+  let rot = 0, vel = 0, dragging = false, lastX = 0, moved = 0, tween = null, idle = true;
+  function render(){ ringEl.style.transform = `rotateY(${rot}deg)`; }
+  function frontIndex(){ const idx = Math.round(-rot / STEP) % N; return ((idx % N) + N) % N; }
+  function updateDots(){ dots.forEach((d, i) => d.classList.toggle('on', i === frontIndex())); }
+  function spinTo(i){
+    const delta = (((-(i * STEP) - rot) % 360) + 540) % 360 - 180;
+    tween = rot + delta; idle = false;
+  }
+  function loop(){
+    if (tween !== null) {
+      rot += (tween - rot) * 0.12;
+      if (Math.abs(tween - rot) < 0.15) { rot = tween; tween = null; idle = true; }
+    } else if (!dragging) {
+      rot += vel; vel *= 0.95;
+      if (idle && !reducedMotion) rot += 0.12;
+    }
+    render(); updateDots();
+    requestAnimationFrame(loop);
+  }
+  stage.addEventListener('pointerdown', e => { dragging = true; idle = false; tween = null; lastX = e.clientX; moved = 0; stage.setPointerCapture(e.pointerId); });
+  stage.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX; lastX = e.clientX; moved += Math.abs(dx);
+    rot += dx * 0.25; vel = dx * 0.25;
+  });
+  function endDrag(e){
+    if (!dragging) return;
+    dragging = false; idle = true;
+    if (moved < 6 && e.target.closest('.ring-card')) {
+      const i = cards.indexOf(e.target.closest('.ring-card'));
+      if (frontIndex() === i) document.getElementById('work').scrollIntoView({behavior:'smooth'});
+      else spinTo(i);
+    }
+  }
+  stage.addEventListener('pointerup', endDrag);
+  stage.addEventListener('pointercancel', () => { dragging = false; idle = true; });
+  stage.addEventListener('mouseenter', () => { idle = false; });
+  stage.addEventListener('mouseleave', () => { if (!dragging) idle = true; });
+  dots.forEach((d, i) => d.addEventListener('click', () => spinTo(i)));
+  render(); updateDots(); loop();
+})();
 </script>
 </body>
 </html>
